@@ -59,6 +59,7 @@ class App extends Component {
 
 function mapStateToProps(state)
 {
+    console.log(state);
     return {countries: state.countries};
 }
 

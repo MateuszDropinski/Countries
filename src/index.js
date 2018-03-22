@@ -9,7 +9,10 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const store = createStore(
+  reducers,
+  applyMiddleware(thunk)
+);
 
 injectGlobal`
     *
@@ -31,5 +34,5 @@ injectGlobal`
     }
 `
 
-ReactDOM.render(<Provider store={createStoreWithMiddleware(reducers)}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
