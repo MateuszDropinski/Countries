@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { media } from '../data/media_style';
-
 const PageSection = ({ children }) =>
 {
     const Section = styled.article`
@@ -12,9 +10,6 @@ const PageSection = ({ children }) =>
         justify-content: center;
         align-items: center;
         padding:15px;
-        
-        ${media.md`padding:20px;`}
-        ${media.hd`padding:30px;`}
     `;
     
     return (

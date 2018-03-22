@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { addCountry } from '../actions';
 
 const SubmitInput = styled.input`
     font-size: 1rem;
@@ -13,7 +14,6 @@ const SubmitInput = styled.input`
     margin-left:5px;
     transition:.25s;
     cursor:pointer;
-    ${media.md`margin-left:10px;padding:7px;`}
 
     &:hover
     {
@@ -28,7 +28,6 @@ const SearchInput = styled.input`
     padding:5px;
     border-radius:2px;
     border:1px solid #000000;
-    ${media.md`width:300px;padding:7px;`}
 `;
 
 class SearchBar extends Component
@@ -52,6 +51,7 @@ class SearchBar extends Component
         e.preventDefault();
         
         this.setState({ searchCountry: "" });
+        this.props.addCountry(this.state.searchCountry);
     }
     
     render()
@@ -59,15 +59,22 @@ class SearchBar extends Component
         return (
             <form onSubmit={ this.onFormSubmit.bind(this) } key="searchForm">
                 <SearchInput
-                    placeholder="Find country to compare..."
+                    placeholder="Add country to compare..."
                     value = { this.state.searchCountry }
                     onChange = { this.onInputChange }
                 />      
                 <SubmitInput 
                     type="submit"
-                    value="Search!"
+                    value="Add!"
                 />                
             </form>      
         )
     }
 }
+
+function mapDispatchToProps(dispatch)
+{
+    return bindActionCreators({ addCountry }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar);
