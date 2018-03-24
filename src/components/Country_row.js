@@ -8,7 +8,7 @@ const TableRow = styled.tr`
     width:100%;
     td
     {
-        width:25%;
+        width:16.66%;
         padding:5px;
         border 1px solid #535353;
     }
@@ -63,9 +63,9 @@ class CountryRow extends Component
             <TableRow>
                 <td><Flag src={flag} alt={name}/></td>
                 <td>{name}</td>
-                <td>{area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} km<sup>2</sup></td>
-                <td>{population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
-                <td>{capital}</td>
+                <td>{(area) ? area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-"} km<sup>2</sup></td>
+                <td>{(population) ? population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "-"}</td>
+                <td>{(capital) ? capital : "-"}</td>
                 <td>
                     <RemoveButton
                        innerRef={x => { this.input = x }}

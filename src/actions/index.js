@@ -6,6 +6,7 @@ export const COUNTRY_FOUND = 'COUNTRY_FOUND';
 export const LOOKING_FOR_COUNTRY = 'LOOKING_FOR_COUNTRY';
 export const BAD_URL = 'BAD_URL';
 export const REMOVE_COUNTRY = 'REMOVE_COUNTRY';
+export const SORT_COUNTRIES = 'SORT_COUNTRIES';
 
 export function getDataRequest() {
     return {
@@ -48,6 +49,14 @@ export function removeCountry(country)
     return {
         type: REMOVE_COUNTRY,
         payload: country
+    }
+}
+
+export function sortCountries(name)
+{
+    return {
+        type: SORT_COUNTRIES,
+        payload: name
     }
 }
 

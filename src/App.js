@@ -27,6 +27,7 @@ class App extends Component
     }
     
     render() {      
+        
         return (
             <PageContainer>
 
@@ -42,7 +43,7 @@ class App extends Component
                 </PageSection>
 
                 <PageSection>
-                    <CountriesTable countries={this.props.countries} />
+                    <CountriesTable countries={this.props.countries} sort={this.props.sort} />
                 </PageSection>
 
             </PageContainer>
@@ -50,9 +51,11 @@ class App extends Component
     }
 }
 
-function mapStateToProps({data})
-{
-    return data;
+function mapStateToProps({data, sort})
+{       
+    let { countries, isLoading, error} = data;
+    
+    return {countries, isLoading, error, sort};
 }
 
 export default connect(mapStateToProps)(App);

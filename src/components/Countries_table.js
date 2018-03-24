@@ -11,7 +11,7 @@ const DataTable = ({className, children}) => (
 
 const StyledTable = styled(DataTable)`
     width:100%;
-    min-width:400px;
+    min-width:450px;
     font-size:.8rem;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     border-spacing:unset;
@@ -29,6 +29,23 @@ const TableBody = styled.tbody`
 
 class CountriesTable extends Component
 {
+    renderRows()
+    {
+        let {sort, countries } = this.props;
+        let {name, direction} = sort;
+        
+        return countries.sort((a,b)=>{
+            let first = (name !== "capital" && name !== "name") ? parseInt(a[name],10) : a[name];
+            let next = (name !== "capital" && name !== "name") ? parseInt(b[name],10) : b[name];
+            
+            console.log(first,next);
+            
+            if(direction === "asc") return (first < next) ? -1 : 1; 
+            else return (first < next) ? 1 : -1;     
+            
+        }).map(country => this.renderCountryRow(country));
+    }
+    
     renderCountryRow(country)
     {
         return <CountryRow key={country.name} country={country}></CountryRow>
@@ -41,7 +58,7 @@ class CountriesTable extends Component
                 <StyledTable>
                     <TableHeader/>
                     <TableBody>
-                        {this.props.countries.map(country => this.renderCountryRow(country))}
+                        {this.renderRows()}
                     </TableBody>
                 </StyledTable>
             </TableContainer>            
