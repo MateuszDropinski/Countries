@@ -25,21 +25,29 @@ const DataHeader = styled.thead`
         {
             text-transform:uppercase;    
         }
-
-        div
-        {
-            transition:.25s;
-            width:0px;
-            height:0px;
-            background-color:white;
-            position:absolute;
-            top:40%;
-            right:6px;
-            border:3px solid white;
-            border-radius:50%;
-        }
     }
 `;
+
+const SortIcon = styled.div`
+    transition:.25s;
+    width:0px;
+    height:0px;
+    position:absolute;
+    top:40%;
+    right:6px;
+    border:3px solid white;
+    border-radius:50%;
+    ${props => createShape(props.shape)};
+`
+
+const createShape = (shape) =>
+{
+    console.log(shape);
+    if(shape === "asc")
+        return "border:none;border-bottom:5px solid #44eb44;border-left:5px solid transparent;border-right:5px solid transparent;border-radius:0px;"
+    else if(shape === "desc")
+        return "border:none;border-top:5px solid #f82f2f;border-left:5px solid transparent;border-right:5px solid transparent;border-radius:0px;"
+}
 
 class TableHeader extends Component
 {    
@@ -47,7 +55,7 @@ class TableHeader extends Component
     {
         return(
             <td key={name} onClick={() => this.props.sortCountries(name)}>
-                {name}<div></div>
+                {name}<SortIcon shape={(name === this.props.sort.name) ? this.props.sort.direction : "default"}></SortIcon>
             </td>
         )    
     }

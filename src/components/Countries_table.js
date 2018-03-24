@@ -43,11 +43,11 @@ class CountriesTable extends Component
             if(direction === "asc") return (first < next) ? -1 : 1; 
             else return (first < next) ? 1 : -1;     
             
-        }).map(country => this.renderCountryRow(country));
+        }).map(country => this.renderCountryRow(country, sort));
     }
     
-    renderCountryRow(country)
-    {
+    renderCountryRow(country, sort)
+    {        
         return <CountryRow key={country.name} country={country}></CountryRow>
     }
     
@@ -56,7 +56,7 @@ class CountriesTable extends Component
         return(         
             <TableContainer>
                 <StyledTable>
-                    <TableHeader/>
+                    <TableHeader sort={this.props.sort}/>
                     <TableBody>
                         {this.renderRows()}
                     </TableBody>
