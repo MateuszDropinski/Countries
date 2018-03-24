@@ -17,20 +17,12 @@ const ErrorMessage = styled.p`
 `
 
 class App extends Component {
-    
-    constructor(props)
+    showErrorOrLoading()
     {
-        super(props);
-        
-        this.state = { error: "" }
-    }
-    
-    componentWillReceiveProps(nextProps)
-    {
-        if(this.props.countries.length === nextProps.countries.length)
-            this.setState({error: "Country not found."});
-        else 
-            this.setState({error: ""});
+        if(this.props.isLoading)
+            return <p>Loading...</p>
+        else
+            return <ErrorMessage>{this.props.error}</ErrorMessage>
     }
     
     render() {      
@@ -45,7 +37,7 @@ class App extends Component {
 
                 <PageSection>
                     <SearchBar />   
-                    <ErrorMessage>{this.state.error}</ErrorMessage>
+                    {this.showErrorOrLoading()}
                 </PageSection>
 
                 <PageSection>
@@ -57,10 +49,9 @@ class App extends Component {
     }
 }
 
-function mapStateToProps(state)
+function mapStateToProps({data})
 {
-    console.log(state);
-    return {countries: state.countries};
+    return data;
 }
 
 export default connect(mapStateToProps)(App);

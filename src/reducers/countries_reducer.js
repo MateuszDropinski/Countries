@@ -18,7 +18,7 @@ export default function(state = {countries:[],isLoading:false,error:""}, action)
                     return {
                         countries: [...state.countries],
                         isLoading: false,
-                        error: "Country is inside the list."
+                        error: "Country is on the list."
                     };
                 }
                 return {
