@@ -51,6 +51,7 @@ class App extends Component {
 
 function mapStateToProps({data})
 {
+    console.log(data);
     return data;
 }
 

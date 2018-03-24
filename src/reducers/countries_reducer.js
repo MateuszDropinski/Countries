@@ -12,9 +12,12 @@ export default function(state = {countries:[],isLoading:false,error:""}, action)
             };
         case actions.COUNTRY_FOUND:
             {
+                let {name, flag, population, area, capital} = action.payload[0];
+                let newCountry = {name,flag,population,area,capital};
+                
                 for(let country of state.countries) 
                 {
-                    if(country.name === action.payload[0].name)
+                    if(country.name === newCountry.name)
                     return {
                         countries: [...state.countries],
                         isLoading: false,
@@ -22,7 +25,7 @@ export default function(state = {countries:[],isLoading:false,error:""}, action)
                     };
                 }
                 return {
-                    countries: [...state.countries, action.payload[0]],
+                    countries: [...state.countries, newCountry],
                     isLoading: false,
                     error: ""
                 };
