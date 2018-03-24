@@ -36,6 +36,12 @@ export default function(state = {countries:[],isLoading:false,error:""}, action)
                 isLoading: false,
                 error: "Country not found."
             };
+        case actions.REMOVE_COUNTRY:
+            return {
+                countries: state.countries.filter(({name}) => name !== action.payload),
+                isLoading: false,
+                error: ""
+            }
         default:
             return state;
     }

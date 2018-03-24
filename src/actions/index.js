@@ -5,6 +5,7 @@ const ROOT_URL = "https://restcountries.eu/rest/v2/name/";
 export const COUNTRY_FOUND = 'COUNTRY_FOUND';
 export const LOOKING_FOR_COUNTRY = 'LOOKING_FOR_COUNTRY';
 export const BAD_URL = 'BAD_URL';
+export const REMOVE_COUNTRY = 'REMOVE_COUNTRY';
 
 export function getDataRequest() {
     return {
@@ -40,5 +41,13 @@ export function addCountry(country)
             .then(data => {dispatch(getDataDone(data))})
             .catch(error => {dispatch(getDataFailed(error))})
     }    
+}
+
+export function removeCountry(country)
+{
+    return {
+        type: REMOVE_COUNTRY,
+        payload: country
+    }
 }
 

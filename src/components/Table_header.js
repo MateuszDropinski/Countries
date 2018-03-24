@@ -22,6 +22,7 @@ class TableHeader extends Component
                     <td>Area</td>
                     <td>Population</td>
                     <td>Capital</td>
+                    <td>Remove</td>
                 </tr>
             </DataHeader>
         )

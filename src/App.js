@@ -16,7 +16,8 @@ const ErrorMessage = styled.p`
     margin:10px 0px 0px 0px;
 `
 
-class App extends Component {
+class App extends Component 
+{
     showErrorOrLoading()
     {
         if(this.props.isLoading)
@@ -51,7 +52,6 @@ class App extends Component {
 
 function mapStateToProps({data})
 {
-    console.log(data);
     return data;
 }
 
