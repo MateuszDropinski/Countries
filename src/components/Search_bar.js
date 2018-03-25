@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addCountry } from '../actions';
+import { media } from '../styles/media';
 
 const SubmitInput = styled.input`
     font-size: 1rem;
@@ -20,6 +21,9 @@ const SubmitInput = styled.input`
         background-color:#000000;
         color:#ffffff;
     }
+
+    ${media.xs`padding:5px 15px;margin-left:15px;`}
+    ${media.md`padding:10px 20px; margin-left:30px;`}
 `;
 
 const SearchInput = styled.input`
@@ -28,6 +32,9 @@ const SearchInput = styled.input`
     padding:5px;
     border-radius:2px;
     border:1px solid #000000;
+
+    ${media.xs`width:300px;`}
+    ${media.md`padding:10px;width:500px;`}
 `;
 
 class SearchBar extends Component

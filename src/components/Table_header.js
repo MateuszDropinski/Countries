@@ -3,51 +3,35 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { sortCountries } from '../actions';
+import { media } from '../styles/media';
 
 const DataHeader = styled.thead`    
     background-color:#535353;
     color:#ffffff;
     td
     {
-        padding:5px 15px 5px 10px;
-        cursor:pointer;
-        position:relative;
+        padding:5px 15px;        
+        position:relative;     
 
-        &:hover
-        {
-            div
-            {
-                border-color:#adadff;
-            }
-        }
+        ${media.xs`padding:10px 15px;`}
+        ${media.lg`padding:15px 20px;`}
 
         &:first-letter
         {
             text-transform:uppercase;    
         }
     }
+    td:not(:first-child)
+    {
+        cursor:pointer;
+        transition:.25s;
+
+        &:hover
+        {
+            color:#adadff;
+        }
+    }   
 `;
-
-const SortIcon = styled.div`
-    transition:.25s;
-    width:0px;
-    height:0px;
-    position:absolute;
-    top:40%;
-    right:6px;
-    border:3px solid white;
-    border-radius:50%;
-    ${props => createShape(props.shape)};
-`
-
-const createShape = (shape) =>
-{
-    console.log(shape);
-    if(shape === "asc")
-        return "border:none;border-bottom:5px solid #44eb44;border-left:5px solid transparent;border-right:5px solid transparent;border-radius:0px;"
-    else if(shape === "desc")
-        return "border:none;border-top:5px solid #f82f2f;border-left:5px solid transparent;border-right:5px solid transparent;border-radius:0px;"
-}
 
 class TableHeader extends Component
 {    
@@ -55,7 +39,7 @@ class TableHeader extends Component
     {
         return(
             <td key={name} onClick={() => this.props.sortCountries(name)}>
-                {name}<SortIcon shape={(name === this.props.sort.name) ? this.props.sort.direction : "default"}></SortIcon>
+                {name}
             </td>
         )    
     }

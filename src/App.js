@@ -14,6 +14,14 @@ const PageContainer = styled.div`
 const ErrorMessage = styled.p`
     color:#9d0000;
     margin:10px 0px 0px 0px;
+    width:100%;
+    text-align:center;
+`
+const LoadingMessage = styled.p`
+    color:black;
+    margin:10px 0px 0px 0px;
+    width:100%;
+    text-align:center;
 `
 
 class App extends Component 
@@ -21,7 +29,7 @@ class App extends Component
     showErrorOrLoading()
     {
         if(this.props.isLoading)
-            return <p>Loading...</p>
+            return <LoadingMessage>Loading...</LoadingMessage>
         else
             return <ErrorMessage>{this.props.error}</ErrorMessage>
     }

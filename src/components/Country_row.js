@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { removeCountry } from '../actions';
+import { media } from '../styles/media';
 
 const TableRow = styled.tr`
     width:100%;
@@ -11,12 +12,17 @@ const TableRow = styled.tr`
         width:16.66%;
         padding:5px;
         border 1px solid #535353;
+        
+        ${media.xs`padding:10px;`}
+        ${media.md`padding:25px;`}
     }
 `
 
 const Flag = styled.img`
     width:50%;
     height:auto;
+
+    ${media.xs`width:65%;`}
 `
 
 const RemoveButton = styled.button`
@@ -27,15 +33,25 @@ const RemoveButton = styled.button`
     color:white;
     fill:white;
     transition:.25s;
+    font-size:.8rem;
+    cursor:pointer;
+
+    ${media.md`padding:10px;`}
+    ${media.lg`padding:15px;`}
 
     svg
     {
         margin-top:3px;
+
+        ${media.md`width:21px; height:21px;`}
+        ${media.md`width:24px; height:24px;`}
     }
 
     span
     {
         display:none;
+        
+        ${media.xs`display:block;`}
     }
 
     &:hover

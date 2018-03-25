@@ -25,6 +25,7 @@ const TableContainer = styled.div`
 
 const TableBody = styled.tbody`
     padding:10px 0px;
+    background-color:#eeeeee;
 `
 
 class CountriesTable extends Component
@@ -37,8 +38,6 @@ class CountriesTable extends Component
         return countries.sort((a,b)=>{
             let first = (name !== "capital" && name !== "name") ? parseInt(a[name],10) : a[name];
             let next = (name !== "capital" && name !== "name") ? parseInt(b[name],10) : b[name];
-            
-            console.log(first,next);
             
             if(direction === "asc") return (first < next) ? -1 : 1; 
             else return (first < next) ? 1 : -1;     

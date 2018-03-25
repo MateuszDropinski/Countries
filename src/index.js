@@ -9,6 +9,8 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
+import { media } from './styles/media';
+
 const store = createStore(
   reducers,
   applyMiddleware(thunk)
@@ -23,6 +25,10 @@ injectGlobal`
     {
         font-family: 'IBM Plex Sans', sans-serif;
         font-size:100%;
+        
+        ${media.xs`font-size:120%;`}
+        ${media.md`font-size:150%;`}
+        ${media.lg`font-size:200%;`}
     }
     body
     {
